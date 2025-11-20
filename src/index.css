@@ -1,0 +1,91 @@
+/* src/index.css */
+@import "tailwindcss";
+
+/* Base variables for light/dark + VisionOS glass feeling */
+:root {
+  --bg-dark: #0b0f14;
+  --panel-dark: #0f1720;
+  --muted: #9aa0a6;
+
+  --glass-border: rgba(255, 255, 255, 0.06);
+  --glass-surface: rgba(255, 255, 255, 0.04);
+}
+
+.light-mode {
+  --bg: #f6f8fb;
+  --panel: #ffffff;
+  --text: #0b1220;
+  --muted: #6b7280;
+  --glass-border: rgba(0,0,0,0.06);
+  --glass-surface: rgba(0,0,0,0.03);
+}
+
+.dark-mode {
+  --bg: var(--bg-dark);
+  --panel: var(--panel-dark);
+  --text: #e6eef6;
+  --muted: #9aa0a6;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  background: radial-gradient(1200px 400px at 10% 10%, rgba(16,185,129,0.03), transparent),
+              linear-gradient(180deg, var(--bg) 0%, rgba(0,0,0,0.2) 100%);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  color: var(--text);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  margin: 0;
+  padding: 18px;
+}
+
+/* container panel */
+.shadow-soft-lg {
+  box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+}
+
+/* Message bubbles: VisionOS glass effect */
+.msg-ai {
+  backdrop-filter: blur(18px) saturate(180%);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 30px rgba(2,6,23,0.45);
+  color: var(--text);
+}
+
+/* User bubble: colorful, glassy */
+.msg-user {
+  background: linear-gradient(90deg, rgba(14,165,233,0.95), rgba(6,182,212,0.95));
+  color: white;
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 10px 30px rgba(2,6,23,0.55);
+}
+
+/* small helper to keep bubbles smooth */
+.max-w-\[72\%\] {
+  max-width: 72%;
+}
+
+/* Play button small tweaks */
+button[aria-label^="Play"] {
+  cursor: pointer;
+}
+
+/* mobile-friendly tweaks */
+@media (max-width: 900px) {
+  aside {
+    display: none;
+  }
+  .max-w-\[72\%\] {
+    max-width: 92%;
+  }
+}
+
+/* tiny focus styles for keyboard users */
+:focus {
+  outline: 3px solid rgba(99,102,241,0.12);
+  outline-offset: 2px;
+}
